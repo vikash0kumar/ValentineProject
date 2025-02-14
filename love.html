@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Forever Valentine ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d4d;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 1.5rem 0;
+        }
+
+        .propose-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 1rem 0;
+        }
+
+        .propose-btn:hover {
+            transform: scale(1.1);
+            background: #ff3333;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            animation: float 6s infinite;
+            opacity: 0;
+        }
+
+        #proposal {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .response-buttons {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .yes-btn, .no-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .yes-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .no-btn {
+            background: #f44336;
+            color: white;
+            position: relative;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            background: #45a049;
+        }
+
+        .no-btn:hover {
+            transform: translateX(20px);
+            background: #d32f2f;
+        }
+
+        .response-message {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #ff4d4d;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        .reasons {
+            text-align: left;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 77, 77, 0.1);
+            border-radius: 10px;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: #ff3333;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="music-player">
+        <button class="play-btn" onclick="toggleMusic()">🎵</button>
+        <audio id="romanticSong" loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-cant-help-falling-in-love-30.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="container">
+        <h1>Happy Valentine's Day, [Her Name]! ❤️</h1>
+        
+        <div class="message">
+            From the moment I met you, my life has been filled with colors I never knew existed...
+        </div>
+
+        <div class="reasons">
+            <h3>Why I Love You:</h3>
+            <ul>
+                <li>Your beautiful smile that lights up my world</li>
+                <li>Your kind and caring heart</li>
+                <li>The way you make every day special</li>
+                <li>Your strength and intelligence</li>
+                <li>How you accept me for who I am</li>
+            </ul>
+        </div>
+
+        <button class="propose-btn" onclick="showProposal()">Click for a Special Message</button>
+
+        <div id="proposal">
+            <div class="message">
+                <p>[Her Name], every day with you feels like a blessing. You've become my best friend, my partner, and my everything.</p>
+                <p>I can't imagine my future without you in it. Will you do me the incredible honor of being my forever Valentine?</p>
+                <div class="response-buttons">
+                    <button class="yes-btn" onclick="handleResponse(true)">YES! 💖</button>
+                    <button class="no-btn" onclick="handleResponse(false)">NO 😢</button>
+                </div>
+                <div id="responseMessage" class="response-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Heart animation
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Proposal display
+        function showProposal() {
+            document.getElementById('proposal').style.display = 'block';
+            document.querySelector('.propose-btn').style.display = 'none';
+        }
+
+        // Audio handling
+        const audio = document.getElementById('romanticSong');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            try {
+                if(isPlaying) {
+                    audio.pause();
+                } else {
+                    audio.play().catch(error => {
+                        alert('Please click anywhere on the page first to enable music!');
+                    });
+                }
+                isPlaying = !isPlaying;
+            } catch (error) {
+                console.error('Audio error:', error);
+            }
+        }
+
+        // Response handling
+        function handleResponse(isAccepted) {
+            const responseMessage = document.getElementById('responseMessage');
+            const buttons = document.querySelector('.response-buttons');
+
+            if(isAccepted) {
+                responseMessage.innerHTML = "I love you too babu! 💞 Forever yours!";
+                createHearts();
+                createHearts();
+                try {
+                    audio.play();
+                    isPlaying = true;
+                } catch (error) {
+                    console.error('Audio play failed:', error);
+                }
+            } else {
+                responseMessage.innerHTML = "I will wait for you my whole life... 💔";
+                document.querySelector('.no-btn').style.transform = 'translateX(100vw)';
+                audio.pause();
+                isPlaying = false;
+            }
+            buttons.style.display = 'none';
+        }
+
+        // Enable audio through initial click
+        document.body.addEventListener('click', function initAudio() {
+            audio.load(); // Initialize audio
+            document.body.removeEventListener('click', initAudio);
+        });
+
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
